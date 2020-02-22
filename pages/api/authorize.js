@@ -7,29 +7,24 @@ import { tokenURI } from "../../hooks/oauth";
 export default async (req, res) => {
   const { code, state } = req.body;
 
-  console.log("code", code);
-  console.log("state", state);
-
   try {
-    const resp = await axios.post(
+    const { data } = await axios.post(
       tokenURI,
       {
         client_id: process.env.GH_CLIENT_ID,
         client_secret: process.env.GH_CLIENT_SECRET,
         redirect_uri: process.env.LOCALHOST || null,
         code,
-        state
+        state,
       },
       {
-        headers: { Accept: "application/json" }
+        headers: { Accept: "application/json" },
       }
     );
-    res.status(200).json(resp.data);
+    // GH always returns 200, make sure we err if resp had
+    // error field set.
+    res.status(data.error ? 400 : 200).json(data);
   } catch (err) {
-    res.status(400).json(err);
+    res.status(500).json(err);
   }
-
-  // res.statusCode = resp.status;
-  // res.setHeader("Content-Type", resp.headers.contenttype);
-  // res.end(JSON.stringify(resp.data));
 };

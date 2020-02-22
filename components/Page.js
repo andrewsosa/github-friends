@@ -4,18 +4,20 @@ import Head from "next/head";
 
 type Props = {
   children: Node,
-  title?: string
+  title?: string,
 };
 
-export default ({
+export default function Page({
   children,
   title = "This is the default title",
   ...rest
-}: Props) => (
-  <section {...rest}>
-    <Head>
-      <title>{title}</title>
-    </Head>
-    {children}
-  </section>
-);
+}: Props) {
+  return (
+    <section {...rest}>
+      <Head>
+        <title>{title}</title>
+      </Head>
+      {children}
+    </section>
+  );
+}

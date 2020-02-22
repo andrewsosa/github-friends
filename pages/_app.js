@@ -1,6 +1,8 @@
 import App from "next/app";
 import React from "react";
 import { CookiesProvider, Cookies } from "react-cookie";
+import { TokenProvider } from "../hooks/oauth";
+import { OctokitProvider } from "../hooks/github";
 
 import "tachyons/css/tachyons.min.css";
 
@@ -18,7 +20,11 @@ const getCookies = ctx => {
 export default function Stargazer({ Component, pageProps, cookies }) {
   return (
     <CookiesProvider cookies={isBrowser() ? undefined : cookies}>
-      <Component {...pageProps} />
+      <TokenProvider>
+        <OctokitProvider>
+          <Component {...pageProps} />
+        </OctokitProvider>
+      </TokenProvider>
     </CookiesProvider>
   );
 }

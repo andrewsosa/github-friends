@@ -1,22 +1,28 @@
 // @flow
 import * as React from "react";
-import { useRouter } from "next/router";
+import Router, { useRouter } from "next/router";
 import axios from "axios";
 
 import Page from "../components/Page";
 import { useOAuth } from "../hooks/oauth";
 
-export default () => {
-  const { setAccessToken } = useOAuth();
+export default function AuthorizePage() {
+  const { token, setAccessToken } = useOAuth();
   const {
-    query: { code, state }
+    query: { code, state },
   } = useRouter();
 
   React.useEffect(() => {
-    axios
-      .post("/api/authorize", { code, state })
-      .then(({ data }) => setAccessToken(data));
+    if (code && state && !token.access_token) {
+      axios
+        .post("/api/authorize", { code, state })
+        .then(({ data }) => setAccessToken(data));
+    }
   }, [code, state]);
+
+  React.useEffect(() => {
+    if (token.access_token) Router.replace("/");
+  });
 
   return (
     <Page className="sans-serif pa4">
@@ -27,4 +33,4 @@ export default () => {
       <pre>{JSON.stringify(token, null, 2)}</pre>
     </Page>
   );
-};
+}
