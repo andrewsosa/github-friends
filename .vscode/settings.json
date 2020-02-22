@@ -1,0 +1,6 @@
+{
+    "files.exclude": {
+        ".next": true,
+        "flow-typed": true
+    }
+}

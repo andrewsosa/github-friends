@@ -1,0 +1,31 @@
+{
+  "name": "with-flow",
+  "version": "1.0.0",
+  "license": "MIT",
+  "author": "Jag Reehal",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "flow": "flow",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@octokit/rest": "^16.43.1",
+    "axios": "^0.19.2",
+    "dotenv": "^8.2.0",
+    "fibers": ">=3.1.0",
+    "next": "canary",
+    "node-sass": "^4.0.0",
+    "react": "^16.7.0",
+    "react-cookie": "^4.0.3",
+    "react-dom": "^16.7.0",
+    "sass": "^1.3.0",
+    "tachyons": "^4.11.1",
+    "uuid": "^3.4.0"
+  },
+  "devDependencies": {
+    "babel-eslint": "8.2.6",
+    "babel-plugin-transform-flow-strip-types": "6.22.0",
+    "flow-bin": "0.77.0"
+  }
+}
