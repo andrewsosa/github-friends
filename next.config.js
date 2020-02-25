@@ -5,6 +5,6 @@ module.exports = {
   env: {
     GH_CLIENT_ID: process.env.GH_CLIENT_ID,
     GH_CLIENT_SECRET: process.env.GH_CLIENT_SECRET,
-    LOCALHOST: process.env.LOCALHOST
-  }
+    LOCALHOST: process.env.LOCALHOST,
+  },
 };
