@@ -20,17 +20,7 @@ export default function AuthorizePage() {
     }
   }, [code, state]);
 
-  React.useEffect(() => {
-    if (token.access_token) Router.replace("/");
-  });
+  if (token.access_token) Router.replace("/");
 
-  return (
-    <Page className="sans-serif pa4">
-      <h1>Authorize Page</h1>
-      <p>Code: {code}</p>
-      <p>State: {state}</p>
-      <p>Token: </p>
-      <pre>{JSON.stringify(token, null, 2)}</pre>
-    </Page>
-  );
+  return <Page title="Authorizing..." />;
 }
