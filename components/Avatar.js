@@ -18,6 +18,7 @@ const Avatar = ({
     <img
       className="border avatar"
       alt={username}
+      title={username}
       src={avatarUrl}
       loading="lazy"
       height="auto"
@@ -32,6 +33,7 @@ const Avatar = ({
       <img
         className="border avatar avatar-child"
         alt={subavatarName}
+        title={subavatarName}
         src={subavatarUrl}
         loading="lazy"
         height="auto"

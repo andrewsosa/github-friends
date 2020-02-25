@@ -27,6 +27,7 @@ const PersonLayout = ({
       avatarUrl={avatar}
       link={url}
       subavatarUrl={source.avatar}
+      subavatarName={source.username}
     />
     <div className="py-3">
       <h3 className="f2">{fullname}</h3>
