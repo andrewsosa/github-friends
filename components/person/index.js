@@ -7,6 +7,8 @@ import Avatar from "./Avatar";
 export type IPersonLayout = {
   ...Profile,
   source: Profile,
+  btnCallback: () => any,
+  isFollowing: boolean,
 };
 
 const PersonLayout = ({
@@ -16,6 +18,8 @@ const PersonLayout = ({
   fullname,
   bio,
   source,
+  btnCallback,
+  isFollowing,
 }: IPersonLayout) => (
   <div className="d-flex flex-column p-4">
     <Avatar
@@ -29,7 +33,14 @@ const PersonLayout = ({
       <h4 className="f3-light text-gray">{username}</h4>
     </div>
     <p className="mb-3">{bio}</p>
-    <Button block style={{ marginTop: "auto" }}>{`Follow ${username}`}</Button>
+    <Button
+      block
+      onClick={btnCallback}
+      disabled={isFollowing}
+      style={{ marginTop: "auto" }}
+    >
+      {isFollowing ? `Following ${username}` : `Follow ${username}`}
+    </Button>
   </div>
 );
 

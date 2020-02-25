@@ -2,6 +2,7 @@
 import * as React from "react";
 import InfiniteScroller from "react-infinite-scroller";
 
+import { FollowProvider } from "./FollowContext";
 import { useSessionStorage } from "../hooks/storage";
 import { useFriends, type User as Friend } from "../hooks/friends";
 import RateLimit from "./RateLimit";
@@ -38,18 +39,20 @@ export default function FriendFinder() {
   return (
     <>
       <RateLimit />
-      <InfiniteScroller pageStart={0} loadMore={loadMore} hasMore={hasMore}>
-        <ProfileGrid>
-          {display &&
-            display.map(({ username, source }) => (
-              <ProfileLoader
-                key={username}
-                username={username}
-                source={source}
-              />
-            ))}
-        </ProfileGrid>
-      </InfiniteScroller>
+      <FollowProvider>
+        <InfiniteScroller pageStart={0} loadMore={loadMore} hasMore={hasMore}>
+          <ProfileGrid>
+            {display &&
+              display.map(({ username, source }) => (
+                <ProfileLoader
+                  key={username}
+                  username={username}
+                  source={source}
+                />
+              ))}
+          </ProfileGrid>
+        </InfiniteScroller>
+      </FollowProvider>
     </>
   );
 }

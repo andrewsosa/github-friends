@@ -1,39 +1,37 @@
 // @flow
 import * as React from "react";
-import { useGithub } from "../hooks/github";
+import useFollow from "../hooks/follow";
 import Profile from "../components/person";
-import { type Profile as ProfileType } from "../hooks/friends";
 import { useProfile } from "../hooks/profile";
 
-type State = ?{
-  userData: ProfileType,
-  sourceData: ProfileType,
-};
 type IProfileLoader = {
   username: string,
   source: string,
+  alreadyFollowing: boolean,
 };
 
 const ProfileLoader = ({ username, source }: IProfileLoader) => {
-  // const [data, setData] = React.useState<State>(null);
-  // const { getUserProfile, parseProfile } = useGithub();
-
-  // Promise.all([getUserProfile(username), getUserProfile(source)]).then(
-  //   ([{ data: userData }, { data: sourceData }]) => {
-  //     setData({
-  //       userData: parseProfile(userData),
-  //       sourceData: parseProfile(sourceData),
-  //     });
-  //   }
-  // );
-  // React.useEffect(() => {}, [username, getUserProfile, setData]);
+  const [following, follow] = useFollow();
 
   const userData = useProfile(username);
   const sourceData = useProfile(source);
 
+  // This is what powers the follow button
+  const followCallback = React.useCallback(() => follow(username), [
+    follow,
+    username,
+  ]);
+
   return (
     <>
-      {userData && sourceData && <Profile {...userData} source={sourceData} />}
+      {userData && sourceData && (
+        <Profile
+          {...userData}
+          source={sourceData}
+          btnCallback={followCallback}
+          isFollowing={following.has(username)}
+        />
+      )}
     </>
   );
 };

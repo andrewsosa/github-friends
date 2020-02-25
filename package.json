@@ -12,6 +12,7 @@
   "dependencies": {
     "@octokit/rest": "^16.43.1",
     "@primer/css": "^14.2.0",
+    "@primer/octicons-react": "^9.4.0",
     "axios": "^0.19.2",
     "dotenv": "^8.2.0",
     "fibers": ">=3.1.0",

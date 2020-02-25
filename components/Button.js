@@ -6,6 +6,7 @@ type IButton = {
   primary: ?boolean,
   small: ?boolean,
   block: ?boolean,
+  disabled: ?boolean,
   className: ?string,
 };
 
@@ -16,11 +17,13 @@ const Button = ({
   small,
   block,
   className,
+  disabled,
   ...rest
 }: IButton) => (
   <button
     type="button"
     onClick={onClick}
+    aria-disabled={disabled}
     className={`btn ${className} ${primary && "btn-primary"} ${small &&
       "btn-sm"} ${block && "btn-block"}`.trim()}
     {...rest}

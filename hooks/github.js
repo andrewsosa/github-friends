@@ -61,6 +61,14 @@ export const useGithub = () => {
     [octokit]
   );
 
+  github.getAlreadyFollowing = React.useCallback(
+    () =>
+      octokit.users
+        .listFollowingForAuthenticatedUser()
+        .then(({ data }) => data.map(user => user.login)),
+    [octokit]
+  );
+
   github.getRateLimit = React.useCallback(() => octokit.rateLimit.get(), [
     octokit,
   ]);

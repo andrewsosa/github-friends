@@ -18,7 +18,6 @@ function frequency<T>(arr: T[]): Map<T, number> {
   return arr.reduce((acc: Map, val: T) => {
     if (!acc.has(val)) acc.set(val, 1);
     else {
-      console.log("duplicate", val);
       acc.set(val, acc.get(val) + 1);
     }
     return acc;
