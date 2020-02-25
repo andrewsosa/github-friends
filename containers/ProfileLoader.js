@@ -1,7 +1,7 @@
 // @flow
 import * as React from "react";
 import useFollow from "../hooks/follow";
-import Profile from "../components/person";
+import Profile from "../components/Profile";
 import { useProfile } from "../hooks/profile";
 
 type IProfileLoader = {

@@ -1,7 +1,7 @@
 // @flow
 import * as React from "react";
-import { type Profile } from "../../hooks/friends";
-import Button from "../Button";
+import { type Profile } from "../hooks/friends";
+import Button from "./Button";
 import Avatar from "./Avatar";
 
 export type IPersonLayout = {

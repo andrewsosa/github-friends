@@ -4,7 +4,6 @@ import * as React from "react";
 export type IAvatar = {
   avatarUrl: string,
   username: string,
-  link: ?string,
   subavatarUrl: string,
   subavatarName: string,
 };
@@ -12,7 +11,6 @@ export type IAvatar = {
 const Avatar = ({
   avatarUrl,
   username,
-  link,
   subavatarUrl,
   subavatarName,
 }: IAvatar) => (
