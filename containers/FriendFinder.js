@@ -40,7 +40,12 @@ export default function FriendFinder() {
     <>
       <RateLimit />
       <FollowProvider>
-        <InfiniteScroller pageStart={0} loadMore={loadMore} hasMore={hasMore}>
+        <InfiniteScroller
+          pageStart={0}
+          loadMore={loadMore}
+          hasMore={hasMore}
+          threshold={500}
+        >
           <ProfileGrid>
             {display &&
               display.map(({ username, source }) => (
