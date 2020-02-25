@@ -2,7 +2,22 @@
 import * as React from "react";
 import { Octokit } from "@octokit/rest";
 import { useOAuth } from "./oauth";
-import { buildFriendGraph } from "./friends";
+
+export type Profile = {
+  avatar: string,
+  fullname: string,
+  username: string,
+  bio: string,
+  url: string,
+};
+
+export const parseProfile = (data: any): Profile => ({
+  avatar: data.avatar_url,
+  url: data.html_url,
+  username: data.login,
+  fullname: data.name,
+  bio: data.bio,
+});
 
 export const OctokitContext = React.createContext<Octokit>(new Octokit());
 
@@ -28,15 +43,16 @@ export const useOctokit = () => {
 };
 
 export const useGithub = () => {
-  const octokit = React.useContext(OctokitContext);
-  const github = {};
-
-  github.buildFriendGraph = React.useCallback(() => buildFriendGraph(octokit), [
-    octokit,
-  ]);
+  const { octokit } = useOctokit();
+  const github = { parseProfile };
 
   github.getAuthedUser = React.useCallback(
     () => octokit.users.getAuthenticated(),
+    [octokit]
+  );
+
+  github.getUserProfile = React.useCallback(
+    (username: string) => octokit.users.getByUsername({ username }),
     [octokit]
   );
 

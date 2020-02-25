@@ -4,7 +4,8 @@ import { CookiesProvider, Cookies } from "react-cookie";
 import { TokenProvider } from "../hooks/oauth";
 import { OctokitProvider } from "../hooks/github";
 
-import "tachyons/css/tachyons.min.css";
+// import "tachyons/css/tachyons.min.css";
+import "@primer/css/index.scss";
 
 const isBrowser = () => typeof window !== "undefined";
 

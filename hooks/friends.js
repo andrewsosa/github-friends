@@ -1,5 +1,7 @@
 // @flow
+import * as React from "react";
 import { Octokit } from "@octokit/rest";
+import { useOctokit } from "./github";
 
 function flatten<T>(arr: T[][]): T[] {
   return arr.reduce((acc, val) => acc.concat(val), []);
@@ -27,6 +29,7 @@ export type User = {
   avatar: string,
   url: string,
   username: string,
+  source: string,
 };
 
 export const getFollowers = async (kit: Octokit, username: string): User[] => {
@@ -35,9 +38,10 @@ export const getFollowers = async (kit: Octokit, username: string): User[] => {
   });
 
   return followers.map(follower => ({
-    avatar: follower.avatar_url,
-    url: follower.html_url,
+    // avatar: follower.avatar_url,
+    // url: follower.html_url,
     username: follower.login,
+    source: username,
   }));
 };
 
@@ -47,9 +51,10 @@ export const getFollowing = async (kit: Octokit, username: string): User[] => {
   });
 
   return following.map(user => ({
-    avatar: user.avatar_url,
-    url: user.html_url,
+    // avatar: user.avatar_url,
+    // url: user.html_url,
     username: user.login,
+    source: username,
   }));
 };
 
@@ -75,12 +80,20 @@ export const buildFriendGraph = async (kit: Octokit) => {
     await Promise.all(followers.map(user => getFollowing(kit, user.login)))
   );
 
-  const allUsers = [
+  let allUsers = [
     ...extendedFollowers,
     ...extendedFollowing,
     ...alsoFollowers,
     ...alsoFollowing,
   ];
+
+  // Remove already followed from suggestions (also self)
+  const followingSet = new Set(following.map(user => user.login));
+  const {
+    data: { login: authedUsername },
+  } = await kit.users.getAuthenticated();
+  followingSet.add(authedUsername);
+  allUsers = allUsers.filter(({ username }) => !followingSet.has(username));
 
   // const followedMap = marshall(flatFollowedList, "username");
   const countedNames = frequency(
@@ -101,7 +114,14 @@ export const buildFriendGraph = async (kit: Octokit) => {
   }));
 };
 
-// eslint-disable-next-line import/prefer-default-export
 export const useFriends = () => {
-  return { buildFriendGraph };
+  const { octokit } = useOctokit();
+  const friends = {};
+
+  friends.buildFriendGraph = React.useCallback(
+    () => buildFriendGraph(octokit),
+    [octokit]
+  );
+
+  return friends;
 };
