@@ -2,5 +2,11 @@
   "env": {
     "GH_CLIENT_ID": "@sgz-gh-id",
     "GH_CLIENT_SECRET": "@sgz-gh-secret"
+  },
+  "build": {
+    "env": {
+      "GH_CLIENT_ID": "@sgz-gh-id",
+      "GH_CLIENT_SECRET": "@sgz-gh-secret"
+    }
   }
 }
