@@ -5,9 +5,9 @@ import Header from "./Header";
 import FriendFinder from "../containers/FriendFinder";
 
 const Friends = () => (
-  <Page className="sans-serif p-6">
+  <Page className="sans-serif p-6" title="Stargazer">
     <div className="px-4">
-      <Header />
+      <Header showLink />
       <hr />
     </div>
     <FriendFinder />

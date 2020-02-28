@@ -1,6 +1,7 @@
 // @flow
 import React, { type Node } from "react";
 import Head from "next/head";
+import StarBanner from "./StarBanner";
 
 type Props = {
   children: Node,
@@ -13,11 +14,14 @@ export default function Page({
   ...rest
 }: Props) {
   return (
-    <section {...rest}>
-      <Head>
-        <title>{title}</title>
-      </Head>
-      {children}
-    </section>
+    <>
+      <section {...rest}>
+        <Head>
+          <title>{title}</title>
+        </Head>
+        {children}
+      </section>
+      {/* <StarBanner /> */}
+    </>
   );
 }
