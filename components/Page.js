@@ -1,7 +1,6 @@
 // @flow
 import React, { type Node } from "react";
 import Head from "next/head";
-import StarBanner from "./StarBanner";
 
 type Props = {
   children: Node,
@@ -10,7 +9,7 @@ type Props = {
 
 export default function Page({
   children,
-  title = "This is the default title",
+  title = "Stargazer",
   ...rest
 }: Props) {
   return (
@@ -18,10 +17,20 @@ export default function Page({
       <section {...rest}>
         <Head>
           <title>{title}</title>
+          <meta property="og:title" content="Stargazer" />
+          <meta
+            property="og:description"
+            content="find your friends on github"
+          />
+          <meta property="og:type" content="website" />
+          <meta property="og:url" content="https://stargazer.now.sh" />
+          <meta
+            property="og:image"
+            content="https://stargazer.now.sh/preview.png"
+          />
         </Head>
         {children}
       </section>
-      {/* <StarBanner /> */}
     </>
   );
 }
