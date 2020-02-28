@@ -1,6 +1,6 @@
 import * as React from "react";
 
-type IButton = {
+type ButtonProps = {
   children: React.Node,
   onClick: () => any,
   primary: ?boolean,
@@ -19,7 +19,7 @@ const Button = ({
   className,
   disabled,
   ...rest
-}: IButton) => (
+}: ButtonProps) => (
   <button
     type="button"
     onClick={onClick}
@@ -36,14 +36,14 @@ export default Button;
 
 // // // // // // // // // // // // // // // // // // // // // // // // // //
 
-type ILinkButton = {
-  children: React.Node,
-  href: string,
-  primary: ?boolean,
-  small: ?boolean,
-  block: ?boolean,
-  className: ?string,
-};
+interface LinkButtonProps {
+  children: React.Node;
+  href: string;
+  primary: ?boolean;
+  small: ?boolean;
+  block: ?boolean;
+  className: ?string;
+}
 
 export const LinkButton = ({
   children,
@@ -51,13 +51,14 @@ export const LinkButton = ({
   primary,
   small,
   className,
+  block,
   ...rest
-}: ILinkButton) => (
+}: LinkButtonProps) => (
   <a
     role="button"
     href={href}
     className={`btn ${className} ${primary && "btn-primary"} ${small &&
-      "btn-sm"}`.trim()}
+      "btn-sm"} ${block && "btn-block"}`.trim()}
     {...rest}
   >
     {children}

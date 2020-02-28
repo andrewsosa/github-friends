@@ -46,16 +46,20 @@ export default function FriendFinder() {
           hasMore={hasMore}
           threshold={500}
         >
-          <ProfileGrid>
-            {display &&
-              display.map(({ username, source }) => (
-                <ProfileLoader
-                  key={username}
-                  username={username}
-                  source={source}
-                />
-              ))}
-          </ProfileGrid>
+          {display.length ? (
+            <ProfileGrid>
+              {display &&
+                display.map(({ username, source }) => (
+                  <ProfileLoader
+                    key={username}
+                    username={username}
+                    source={source}
+                  />
+                ))}
+            </ProfileGrid>
+          ) : (
+            <pre className="p-4">Loading...</pre>
+          )}
         </InfiniteScroller>
       </FollowProvider>
     </>
