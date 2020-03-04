@@ -1,14 +1,17 @@
-import App from "next/app";
 import React from "react";
+import Router from "next/router";
+import * as Fathom from "fathom-client";
 import { CookiesProvider, Cookies } from "react-cookie";
 import { TokenProvider } from "../hooks/oauth";
 import { OctokitProvider } from "../hooks/github";
 
-// import "tachyons/css/tachyons.min.css";
 import "@primer/css/index.scss";
 
-const isBrowser = () => typeof window !== "undefined";
+Router.events.on("routeChangeComplete", () => {
+  Fathom.trackPageview();
+});
 
+const isBrowser = () => typeof window !== "undefined";
 const getCookies = ctx => {
   if (ctx && ctx.req && ctx.req.headers.cookie) {
     return new Cookies(ctx.req.headers.cookie);
@@ -17,16 +20,30 @@ const getCookies = ctx => {
   return new Cookies();
 };
 
+const Tracking = props => {
+  React.useEffect(() => {
+    if (process.env.NODE_ENV === "production") {
+      Fathom.load();
+      Fathom.setSiteId("SLPFEROK");
+      Fathom.trackPageview();
+    }
+  }, []);
+
+  return <div {...props} />;
+};
+
 // This default export is required in a new `pages/_app.js` file.
 export default function Stargazer({ Component, pageProps, cookies }) {
   return (
-    <CookiesProvider cookies={isBrowser() ? undefined : cookies}>
-      <TokenProvider>
-        <OctokitProvider>
-          <Component {...pageProps} />
-        </OctokitProvider>
-      </TokenProvider>
-    </CookiesProvider>
+    <Tracking>
+      <CookiesProvider cookies={isBrowser() ? undefined : cookies}>
+        <TokenProvider>
+          <OctokitProvider>
+            <Component {...pageProps} />
+          </OctokitProvider>
+        </TokenProvider>
+      </CookiesProvider>
+    </Tracking>
   );
 }
 
