@@ -29,7 +29,7 @@ const Tracking = props => {
     }
   }, []);
 
-  return <div {...props} />;
+  return <React.Fragment {...props} />;
 };
 
 // This default export is required in a new `pages/_app.js` file.
