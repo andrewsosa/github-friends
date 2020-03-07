@@ -1,0 +1,18 @@
+.split {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.preview {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .split {
+    grid-template-columns: 1fr 2fr;
+  }
+
+  .preview {
+    display: unset;
+  }
+}

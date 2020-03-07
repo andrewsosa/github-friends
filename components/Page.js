@@ -26,7 +26,7 @@ export default function Page({
           <meta property="og:url" content="https://stargazer.now.sh" />
           <meta
             property="og:image"
-            content="https://stargazer.now.sh/preview.png"
+            content="https://stargazer.now.sh/preview_frame_censored.png"
           />
         </Head>
         {children}

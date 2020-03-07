@@ -4,13 +4,16 @@ import Page from "./Page";
 import { LinkButton } from "./Button";
 import Header from "./Header";
 
+import { split, preview } from "./LandingPage.module.css";
+// import preview from "../public/stargazer_censored.png";
+
 export type Props = {
   loginURI: string,
 };
 
 const LoginHero = ({ loginURI }: Props) => (
-  <Page title="Stargazer" style={{ height: "100vh" }}>
-    <div className="d-flex flex-column flex-items-center height-full text-center py-10">
+  <Page title="Stargazer" className={`${split} px-0 p-md-6 height-full`}>
+    <div className="d-flex flex-column flex-items-center text-center height-full py-md-10">
       <div
         className="d-flex flex-column flex-justify-center px-6 py-8 bg-white"
         style={{ maxWidth: "22rem" }}
@@ -31,6 +34,22 @@ const LoginHero = ({ loginURI }: Props) => (
           Made with {"<3"} by{" "}
           <a href="https://andrewsosa.dev">andrewsosa.dev</a>
         </pre>
+      </div>
+    </div>
+    {/* split */}
+    <div className={`${preview} px-6`}>
+      <div className="d-flex flex-column flex-justify-center height-full text-center">
+        <img
+          src="./preview_frame_censored.png"
+          loading="lazy"
+          height="auto"
+          width="100%"
+          style={{
+            height: "auto",
+            width: "100%",
+            objectFit: "contain",
+          }}
+        />
       </div>
     </div>
   </Page>
