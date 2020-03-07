@@ -14,7 +14,7 @@ const Avatar = ({
   subavatarUrl,
   subavatarName,
 }: IAvatar) => (
-  <div className="avatar-parent-child d-inline-flex mr-2">
+  <div className="avatar-parent-child d-inline-flex flex-items-start mr-2">
     <img
       className="border avatar"
       alt={username}
