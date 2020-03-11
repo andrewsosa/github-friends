@@ -1,7 +1,7 @@
 # stargazer
 > Find your friends on github
 
-![preview.png](./public/preview.png)
+![preview.png](./public/preview_frame_censored.png)
 
 ### How It Works
 
