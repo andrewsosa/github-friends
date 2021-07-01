@@ -9,3 +9,9 @@ Extra-large	xl	1280px
   right: -5%;
   width: 25%;
 }
+
+/* Fix weird sizing issue on small screens */
+html,
+body {
+  overflow-x: hidden;
+}
