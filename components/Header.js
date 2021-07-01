@@ -7,7 +7,7 @@ interface IHeader {
 
 const Header = ({ showLink }: IHeader) => (
   <>
-    <h1 className="f0 mb-2 mt-4">Github Friends</h1>
+    <h1 className="f0 mb-2 mt-4">GitHub Friends</h1>
     <p className="text-mono">
       Find your friends on github
       {showLink && (

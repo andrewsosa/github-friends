@@ -12,7 +12,7 @@ export type Props = {
 
 const LoginHero = ({ loginURI }: Props) => (
   <Page
-    title="Github Friends"
+    title="GitHub Friends"
     className="px-0 p-md-6"
     style={{ height: "100vh" }}
   >
@@ -24,17 +24,17 @@ const LoginHero = ({ loginURI }: Props) => (
         >
           <Header />
           <LinkButton block primary={true} href={loginURI} className="my-5">
-            Sign in with Github
+            Sign in with GitHub
           </LinkButton>
           <p style={{ textAlign: "justify" }}>
             <b>
               <a href="https://github.com/andrewsosa/github-friends">
-                Github Friends
+                GitHub Friends
               </a>
             </b>{" "}
-            helps you find people you know on Github by graphing{" "}
-            <b>your followers</b> and the <b>people you follow</b>. Github
-            Friends works best if you already have a few connections on Github.
+            helps you find people you know on GitHub by graphing{" "}
+            <b>your followers</b> and the <b>people you follow</b>. GitHub
+            Friends works best if you already have a few connections on GitHub.
           </p>
           <pre className="mt-8">
             Made with {"<3"} by{" "}

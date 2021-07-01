@@ -9,7 +9,7 @@ type Props = {
 
 export default function Page({
   children,
-  title = "Github Friends",
+  title = "GitHub Friends",
   ...rest
 }: Props) {
   return (
@@ -17,7 +17,7 @@ export default function Page({
       <section {...rest}>
         <Head>
           <title>{title}</title>
-          <meta property="og:title" content="Github Friends" />
+          <meta property="og:title" content="GitHub Friends" />
           <meta
             property="og:description"
             content="find your friends on github"

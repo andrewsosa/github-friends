@@ -7,4 +7,4 @@ assignees: andrewsosa
 
 ---
 
-Please remove me from any of Github Friends' preview images/promotional material.
+Please remove me from any of GitHub Friends' preview images/promotional material.
