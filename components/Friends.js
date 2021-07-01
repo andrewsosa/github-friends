@@ -5,7 +5,7 @@ import Header from "./Header";
 import FriendFinder from "../containers/FriendFinder";
 
 const Friends = () => (
-  <Page className="sans-serif p-6" title="Github Friends">
+  <Page className="sans-serif p-responsive" title="Github Friends">
     <div className="px-4">
       <Header showLink />
       <hr />

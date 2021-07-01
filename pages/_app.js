@@ -6,6 +6,8 @@ import { TokenProvider } from "../hooks/oauth";
 import { OctokitProvider } from "../hooks/github";
 
 import "@primer/css/index.scss";
+import "../styles/overrides.css";
+import "../styles/vars.css";
 
 Router.events.on("routeChangeComplete", () => {
   Fathom.trackPageview();
