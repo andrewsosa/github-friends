@@ -1,7 +1,7 @@
 # Github Friends
 > Find your friends on github
 
-![preview.png](./public/preview_frame_censored.png)
+![preview.png](./public/github_famous_preview.png)
 
 ### How It Works
 
