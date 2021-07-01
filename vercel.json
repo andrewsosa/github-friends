@@ -3,15 +3,16 @@
     "GH_CLIENT_ID": "@sgz-gh-id",
     "GH_CLIENT_SECRET": "@sgz-gh-secret",
     "GH_REDIRECT_URI": "https://github-friends.vercel.app/authorize",
-    "SENTRY_SERVER_INIT_PATH": ".next/server/sentry/initServerSDK.js",
-    "SENTRY_AUTH_TOKEN": "@gf-sentry-auth-token"
+    "SENTRY_AUTH_TOKEN": "@gf-sentry-auth-token",
+    "SENTRY_SERVER_INIT_PATH": "sentry.server.config.js"
   },
   "build": {
     "env": {
       "GH_CLIENT_ID": "@sgz-gh-id",
       "GH_CLIENT_SECRET": "@sgz-gh-secret",
       "GH_REDIRECT_URI": "https://github-friends.vercel.app/authorize",
-      "SENTRY_SERVER_INIT_PATH": ".next/server/sentry/initServerSDK.js"
+      "SENTRY_AUTH_TOKEN": "@gf-sentry-auth-token",
+      "SENTRY_SERVER_INIT_PATH": "sentry.server.config.js"
     }
   }
 }

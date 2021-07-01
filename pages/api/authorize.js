@@ -5,8 +5,7 @@ import { withSentry } from "@sentry/nextjs";
 import { tokenURI } from "../../hooks/oauth";
 
 const handler = async (req, res) => {
-  const { code, state } = req.body;
-  const { error, error_description } = req.params;
+  const { code, state, error, error_description } = req.body;
 
   if (error) {
     throw new Error(error_description);
