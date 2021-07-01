@@ -14,8 +14,8 @@ export const tokenURI = "https://github.com/login/oauth/access_token";
 export const createAuthorizeURI = (state: string) =>
   `${authorizeURI}?${QS.stringify({
     client_id: process.env.GH_CLIENT_ID,
+    redirect_uri: process.env.GH_REDIRECT_URI,
     scope: "user:follow",
-    redirect_uri: process.env.LOCALHOST || "",
     state,
   })}`;
 
