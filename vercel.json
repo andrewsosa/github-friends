@@ -1,0 +1,14 @@
+{
+  "env": {
+    "GH_CLIENT_ID": "@sgz-gh-id",
+    "GH_CLIENT_SECRET": "@sgz-gh-secret",
+    "SENTRY_SERVER_INIT_PATH": ".next/server/sentry/initServerSDK.js"
+  },
+  "build": {
+    "env": {
+      "GH_CLIENT_ID": "@sgz-gh-id",
+      "GH_CLIENT_SECRET": "@sgz-gh-secret",
+      "SENTRY_SERVER_INIT_PATH": ".next/server/sentry/initServerSDK.js"
+    }
+  }
+}

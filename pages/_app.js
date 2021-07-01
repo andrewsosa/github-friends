@@ -35,7 +35,7 @@ const Tracking = props => {
 };
 
 // This default export is required in a new `pages/_app.js` file.
-export default function Stargazer({ Component, pageProps, cookies }) {
+export default function GF({ Component, pageProps, cookies }) {
   return (
     <Tracking>
       <CookiesProvider cookies={isBrowser() ? undefined : cookies}>
@@ -49,7 +49,7 @@ export default function Stargazer({ Component, pageProps, cookies }) {
   );
 }
 
-Stargazer.getInitialProps = async ({ Component, ctx }) => {
+GF.getInitialProps = async ({ Component, ctx }) => {
   let pageProps = {};
 
   if (Component.getInitialProps) {
