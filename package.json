@@ -11,6 +11,7 @@
   },
   "dependencies": {
     "@octokit/rest": "^16.43.1",
+    "@panelbear/panelbear-js": "^1.2.0",
     "@primer/css": "^14.2.0",
     "@sentry/nextjs": "^6.8.0",
     "axios": "^0.21.1",
