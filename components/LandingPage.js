@@ -46,7 +46,7 @@ const LoginHero = ({ loginURI }: Props) => (
       <div className={`${preview} px-6`}>
         <div className="d-flex flex-column flex-justify-center height-full text-center">
           <img
-            src="./preview_frame_censored.png"
+            src="./github_famous_preview.png"
             loading="lazy"
             height="auto"
             width="100%"

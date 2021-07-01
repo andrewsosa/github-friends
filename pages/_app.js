@@ -1,15 +1,12 @@
 import React from "react";
-import Router from "next/router";
-import * as Fathom from "fathom-client";
 import { CookiesProvider, Cookies } from "react-cookie";
 import { TokenProvider } from "../hooks/oauth";
 import { OctokitProvider } from "../hooks/github";
+import { usePanelbear } from "../hooks/panelbear";
 
 import "@primer/css/index.scss";
-
-Router.events.on("routeChangeComplete", () => {
-  Fathom.trackPageview();
-});
+import "../styles/overrides.css";
+import "../styles/vars.css";
 
 const isBrowser = () => typeof window !== "undefined";
 const getCookies = ctx => {
@@ -21,19 +18,16 @@ const getCookies = ctx => {
 };
 
 const Tracking = props => {
-  React.useEffect(() => {
-    if (process.env.NODE_ENV === "production") {
-      Fathom.load();
-      Fathom.setSiteId("SLPFEROK");
-      Fathom.trackPageview();
-    }
-  }, []);
+  usePanelbear("1oESo1GZfmT", {
+    // Uncomment to allow sending events on localhost, and log to console too.
+    // debug: true
+  });
 
   return <React.Fragment {...props} />;
 };
 
 // This default export is required in a new `pages/_app.js` file.
-export default function Stargazer({ Component, pageProps, cookies }) {
+export default function GF({ Component, pageProps, cookies }) {
   return (
     <Tracking>
       <CookiesProvider cookies={isBrowser() ? undefined : cookies}>
@@ -47,7 +41,7 @@ export default function Stargazer({ Component, pageProps, cookies }) {
   );
 }
 
-Stargazer.getInitialProps = async ({ Component, ctx }) => {
+GF.getInitialProps = async ({ Component, ctx }) => {
   let pageProps = {};
 
   if (Component.getInitialProps) {

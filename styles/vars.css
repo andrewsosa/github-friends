@@ -1,0 +1,16 @@
+/* CSS Primer Breakpoints
+Small   	sm	544px
+Medium  	md	768px
+Large   	lg	1012px
+Extra-large	xl	1280px
+*/
+
+:root {
+  --responsive-avatar: 240px;
+}
+
+@media (min-width: 544px) {
+  :root {
+    --responsive-avatar: 240px;
+  }
+}

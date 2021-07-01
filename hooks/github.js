@@ -11,6 +11,15 @@ export type Profile = {
   url: string,
 };
 
+export interface GithubHook {
+  parseProfile: Function;
+  getAuthedUser: Function;
+  getUserProfile: Function;
+  followUser: Function;
+  getAlreadyFollowing: Function;
+  getRateLimit: Function;
+}
+
 export const parseProfile = (data: any): Profile => ({
   avatar: data.avatar_url,
   url: data.html_url,
@@ -44,7 +53,7 @@ export const useOctokit = () => {
 
 export const useGithub = () => {
   const { octokit } = useOctokit();
-  const github = { parseProfile };
+  const github: GithubHook = { parseProfile };
 
   github.getAuthedUser = React.useCallback(
     () => octokit.users.getAuthenticated(),

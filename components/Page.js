@@ -23,10 +23,13 @@ export default function Page({
             content="find your friends on github"
           />
           <meta property="og:type" content="website" />
-          <meta property="og:url" content="https://stargazer.now.sh" />
+          <meta
+            property="og:url"
+            content="https://github-friends.vercel.app.now.sh"
+          />
           <meta
             property="og:image"
-            content="https://stargazer.now.sh/preview_frame_censored.png"
+            content="https://github-friends.vercel.app/github_famous_preview.png"
           />
         </Head>
         {children}

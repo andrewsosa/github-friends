@@ -1,10 +1,10 @@
 // @flow
 
-import * as http from "http";
 import axios from "axios";
+import { withSentry } from "@sentry/nextjs";
 import { tokenURI } from "../../hooks/oauth";
 
-export default async (req, res) => {
+const handler = async (req, res) => {
   const { code, state } = req.body;
 
   try {
@@ -28,3 +28,5 @@ export default async (req, res) => {
     res.status(500).json(err);
   }
 };
+
+export default withSentry(handler);

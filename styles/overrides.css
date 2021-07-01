@@ -1,0 +1,11 @@
+/* CSS Primer Breakpoints
+Small   	sm	544px
+Medium  	md	768px
+Large   	lg	1012px
+Extra-large	xl	1280px
+*/
+
+.avatar-child {
+  right: -5%;
+  width: 25%;
+}

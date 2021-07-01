@@ -1,5 +1,15 @@
+/* CSS Primer Breakpoints
+Small   	sm	544px
+Medium  	md	768px
+Large   	lg	1012px
+Extra-large	xl	1280px
+*/
+
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  grid-template-columns: repeat(
+    auto-fill,
+    minmax(var(--responsive-avatar), 1fr)
+  );
   /* grid-gap: 2rem; */
 }
