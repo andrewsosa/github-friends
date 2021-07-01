@@ -1,5 +1,6 @@
 // @flow
 import * as React from "react";
+import axios from "axios";
 import { Octokit } from "@octokit/rest";
 import { useOctokit } from "./github";
 
@@ -117,10 +118,12 @@ export const useFriends = () => {
   const { octokit } = useOctokit();
   const friends = {};
 
-  friends.buildFriendGraph = React.useCallback(
-    () => buildFriendGraph(octokit),
-    [octokit]
-  );
+  friends.buildFriendGraph = React.useCallback(() => {
+    if (process.env.GF_SAMPLE_DATA) {
+      return axios.get(process.env.GF_SAMPLE_DATA).then(resp => resp.data);
+    }
+    return buildFriendGraph(octokit);
+  }, [octokit]);
 
   return friends;
 };

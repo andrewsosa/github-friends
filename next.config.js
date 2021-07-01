@@ -11,6 +11,7 @@ const moduleExports = {
   env: {
     GH_CLIENT_ID: process.env.GH_CLIENT_ID,
     GH_CLIENT_SECRET: process.env.GH_CLIENT_SECRET,
+    GF_SAMPLE_DATA: process.env.GF_SAMPLE_DATA,
     LOCALHOST: process.env.LOCALHOST,
   },
 };

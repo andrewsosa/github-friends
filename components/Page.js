@@ -29,7 +29,7 @@ export default function Page({
           />
           <meta
             property="og:image"
-            content="https://github-friends.vercel.app/preview_frame_censored.png"
+            content="https://github-friends.vercel.app/github_famous_preview.png"
           />
         </Head>
         {children}
